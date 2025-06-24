@@ -34,21 +34,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             status, headers, body = handle_logout(self)
 
         # Admin
-
-        # Route for status 
-        elif path.startswith("/admin/status"):
-            status_handler = StatusHandler(self)
-            if method == "GET":
-                status, headers, body = status_handler.handle_get()
-            elif method == "POST":
-                status, headers, body = status_handler.handle_post()
-            elif method == "PUT":
-                status, headers, body = status_handler.handle_put()
-            elif method == "DELETE":
-                status, headers, body = status_handler.handle_delete()
-            else:
-                status, headers, body = 405, {"Content-Type": "application/json"}, b'{"error":"Method Not Allowed"}'
-                
+        
         # Route for gender        
         elif path.startswith("/admin/gender"):
             status_handler = GenderHandler(self)
